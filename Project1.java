@@ -5,5 +5,8 @@ import java.util.*;
 
 public class Project1{
   public static void main(String args[]){
+    int n;
+    int k = n / 2;
+    
     
 }
