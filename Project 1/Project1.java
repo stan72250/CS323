@@ -7,6 +7,8 @@ public class Project1{
   public static void main(String args[]){
     int n;
     int k = n / 2;
+    int[] arr = new int[n];
     
-    
+    Random rand = new Random();
+  }
 }
