@@ -26,4 +26,12 @@ public class Driver{
     }
     System.out.println();
   }
+  //Utility class to print sorted Array
+	static void printArray(int arr[]) {
+		int n = arr.length;
+		for(int i = 0; i < n; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+	}
 }
