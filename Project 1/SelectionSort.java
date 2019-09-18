@@ -1,6 +1,16 @@
 
 class SelectionSort {
-	void sort(int arr[]) {
+	private int[] arr;
+	
+	public SelectionSort(int[] a){
+		arr = a;
+	}
+	
+	public void sort() {
+		SSort(arr);
+	}
+	
+	private void SSort(int arr[]) {
 		int n = arr.length;
 		
 		for(int i = 0; i < n - 1; i++) {

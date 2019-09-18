@@ -3,11 +3,13 @@ class MergeSort {
 	private int[] arr;
 	private int l;
 	private int r;
-	MergeSort(int[] a){
+	
+	public MergeSort(int[] a){
 		arr = a;
 		l = 0;
 		r = arr.length - 1;
 	}
+	
 	public void sort() {
 		mergeSort(arr, l, r);
 	}
@@ -76,11 +78,11 @@ class MergeSort {
 	
 	//Utility class to print sorted Array
 	void printArray() {
-			int n = arr.length;
-			for(int i = 0; i < n; i++) {
-				System.out.print(arr[i] + " ");
-			}
-			System.out.println();
+		int n = arr.length;
+		for(int i = 0; i < n; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
 	}
 		
 }

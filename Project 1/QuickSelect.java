@@ -1,6 +1,22 @@
 import java.util.*;
 class QuickSelect {
-	static int partition(Integer[] arr, int l, int r) {
+	private int[] arr;
+	private int l;
+	private int r;
+	private int k;
+	
+	public QuickSelect(int[] a, int n){
+		arr = a;
+		l = 0;
+		r = arr.length - 1;
+		k = n;
+	}
+	
+	public void QS() {
+		kthSmallest(arr, l, r, k);
+	}
+	
+	private static int partition(int[] arr, int l, int r) {
 		int x = arr[r], i = l;
 		for(int j = l; j <= r - 1; j++) {
 			if(arr[j] <= x) {
@@ -17,7 +33,7 @@ class QuickSelect {
 		return i;
 	}
 	
-	static int kthSmallest(Integer[] arr, int l, int r, int k) {
+	private static int kthSmallest(int[] arr, int l, int r, int k) {
 		if(k > 0 && k <= r - 1 + 1) {
 			int pos = partition(arr, l, r);
 			
