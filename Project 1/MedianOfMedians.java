@@ -1,5 +1,11 @@
 import java.util.*;
 
-public class MedianOfMedians{
+class MedianOfMedians {
+  private int[] arr;
+  private int k;
+  
+  MedianOfMedians(){
+    
+  }
 
 }
