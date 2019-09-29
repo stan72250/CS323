@@ -1,13 +1,15 @@
 class InsertionSort{
 	private int[] arr;
+	private int k;
 	
-	public InsertionSort(int[] a){
+	public InsertionSort(int[] a, int n){
 		arr = a;
+		k = n;
 	}
 	public sort(){
-		ISort(arr)l
+		ISort(arr, k);
 	}
-	private void ISort(int arr[]) {
+	private int ISort(int arr[], int k) {
 		int n = arr.length;
 		for (int i = 1; i < n; ++i) {
 			int key = arr[i];
@@ -19,5 +21,6 @@ class InsertionSort{
 			}
 			arr[j + 1] = key;
 		}
+		return arr[k];
 	}
 }
