@@ -1,29 +1,33 @@
 
 class SelectionSort {
 	private int[] arr;
+	private int k;
 	
-	public SelectionSort(int[] a){
+	public SelectionSort(int[] a, int n){
 		arr = a;
+		k = n;
 	}
 	
 	public void sort() {
-		SSort(arr);
+		SSort(arr, k);
 	}
 	
-	private void SSort(int arr[]) {
+	private int SSort(int arr[], int k) {
 		int n = arr.length;
 		
-		for(int i = 0; i < n - 1; i++) {
+		for(int i = 1; i <= k; i++) {
 			int min_idx = i;
+			int min_value = arr[i];
 			for(int j = i + 1; j < n; j++) {
 				if(arr[j] < arr[min_idx]) {
 					min_idx = j;
+					min_value = arr[j];
+					int temp = arr[min_idx];
+					arr[min_idx] = arr[i];
+					arr[i] = temp;
 				}
-			}
-			
-			int temp = arr[min_idx];
-			arr[min_idx] = arr[i];
-			arr[i] = temp;
+			}			
 		}
+		return arr[k];
 	}
 }
