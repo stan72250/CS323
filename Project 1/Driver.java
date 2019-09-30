@@ -51,20 +51,28 @@ public class Driver{
         
         switch(choice){
           case 1:
+            InsertionSort is = new InsertionSort(arr, k);
+            is.run();
             break;
           case 2:
+            
             break;
           case 3:
+            SelectionSort ss = new SelectionSort(arr, k);
+            ss.run();
             break;
           case 4:
+            
             break;
           case 5:
+            QuickSelect qs = new QuickSelect(arr, k);
+            qs.run();
             break;
           case 6:
             break;
           case 7:
             break;
-                                
+        }              
       }
       catch(NumberFormatException e){
         System.out.println("Invalid input");
