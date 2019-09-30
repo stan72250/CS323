@@ -1,13 +1,15 @@
 class InsertionSort{
 	private int[] arr;
 	private int k;
+	private static int count = 0;
 	
 	public InsertionSort(int[] a, int n){
 		arr = a;
 		k = n;
 	}
 	public run(){
-		ISort(arr, k);
+		System.out.println(ISort(arr, k));
+		System.out.println(numOfComparisons);
 	}
 	private int ISort(int arr[], int k) {
 		int n = arr.length;
@@ -22,5 +24,8 @@ class InsertionSort{
 			arr[j + 1] = key;
 		}
 		return arr[k];
+	}
+	private static int numOfComparisons(){
+		return count;
 	}
 }
