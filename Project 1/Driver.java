@@ -32,6 +32,44 @@ public class Driver{
       System.out.print(arr[i] + " ");
     }
     System.out.println();
+    System.out.println();
+    
+    int choice = 0;
+    
+    System.out.println("Select algorithm to find median:\n");
+                       "1) Insertion Sort\n" +
+                       "2) Merge Sort\n" +
+                       "3) Selection Sort\n" +
+                       "4) Heap Sort\n" +
+                       "5) Quick Select\n" +
+                       "6) Median of Medians\n") +
+                       "7) End Program\n");
+    while(choice != 7){
+      try{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        choice = Integer.parseInt(br.readLine());
+        
+        switch(choice){
+          case 1:
+            break;
+          case 2:
+            break;
+          case 3:
+            break;
+          case 4:
+            break;
+          case 5:
+            break;
+          case 6:
+            break;
+          case 7:
+            break;
+                                
+      }
+      catch(NumberFormatException e){
+        System.out.println("Invalid input");
+      }
+    
   }
  
 }
