@@ -7,7 +7,7 @@ class InsertionSort{
 		arr = a;
 		k = n;
 	}
-	public run(){
+	public void run(){
 		System.out.println(ISort(arr, k));
 		System.out.println(numOfComparisons);
 	}
