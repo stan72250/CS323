@@ -22,6 +22,7 @@ class InsertionSort{
 			while(j >= 0 && arr[j] > key) {
 				arr[j + 1] = arr[j];
 				j = j - 1;
+				count++;
 			}
 			arr[j + 1] = key;
 		}
