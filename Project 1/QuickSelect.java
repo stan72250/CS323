@@ -12,7 +12,7 @@ class QuickSelect {
 		k = n;
 	}
 	
-	public void QS() {
+	public void run() {
 		kthSmallest(arr, l, r, k);
 	}
 	
