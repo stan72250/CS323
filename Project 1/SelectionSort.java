@@ -8,7 +8,7 @@ class SelectionSort {
 		k = n;
 	}
 	
-	public void sort() {
+	public void run() {
 		SSort(arr, k);
 	}
 	
