@@ -8,8 +8,10 @@ class InsertionSort{
 		k = n;
 	}
 	public void run(){
-		System.out.println(ISort(arr, k));
-		System.out.println(numOfComparisons);
+		ISort(arr, k);
+		printArray(arr);
+		System.out.println("Median Element: " + ISort(arr, k));
+		System.out.println("Number of Comparisons: " + numOfComparisons);
 	}
 	private int ISort(int arr[], int k) {
 		int n = arr.length;
@@ -23,7 +25,15 @@ class InsertionSort{
 			}
 			arr[j + 1] = key;
 		}
-		return arr[k];
+		return arr[k - 1];
+	}
+	private static void printArray(int[] arr) {
+		int n = arr.length;
+		System.out.println("Sorted Array: ");
+		for(int i = 0; i < n; ++i) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
 	}
 	private static int numOfComparisons(){
 		return count;
