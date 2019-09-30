@@ -37,13 +37,13 @@ public class Driver{
     
     int choice = 0;
     
-    System.out.println("Select algorithm to find median:\n");
+    System.out.println("Select algorithm to find median:\n" +
                        "1) Insertion Sort\n" +
                        "2) Merge Sort\n" +
                        "3) Selection Sort\n" +
                        "4) Heap Sort\n" +
                        "5) Quick Select\n" +
-                       "6) Median of Medians\n") +
+                       "6) Median of Medians\n" +
                        "7) End Program\n");
     while(choice != 7){
       try{
