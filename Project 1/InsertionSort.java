@@ -6,7 +6,7 @@ class InsertionSort{
 		arr = a;
 		k = n;
 	}
-	public sort(){
+	public run(){
 		ISort(arr, k);
 	}
 	private int ISort(int arr[], int k) {
