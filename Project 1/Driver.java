@@ -2,9 +2,10 @@
 //Authors: Stanley Lin & Yajie Zhang
 
 import java.util.*;
+import java.io.*;
 
 public class Driver{
-  public static void main(String args[]){
+  public static void main(String args[]) throws NumberFormatException, IOException{
     int n;
     int k = 0;
     
