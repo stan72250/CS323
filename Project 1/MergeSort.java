@@ -3,23 +3,28 @@ class MergeSort {
 	private int[] arr;
 	private int l;
 	private int r;
+	private int k;
+	private int count = 0;
 	
-	public MergeSort(int[] a){
+	public MergeSort(int[] a, int n){
 		arr = a;
+		k = n;
 		l = 0;
 		r = arr.length - 1;
 	}
 	
-	public void sort() {
-		mergeSort(arr, l, r);
+	public void run() {
+		sort(arr, l, r);
 	}
 	
-	private void mergeSort(int[] a, int l, int r) {
+	private void sort(int[] a, int l, int r) {
 		if(l < r) {
 			int m = (l + r) / 2;
 			
 			mergeSort(a, l, m);
+			count++;
 			mergeSort(a, m + 1, r);
+			count++;
 			merge(a, l, m, r);
 		}
 	
@@ -77,12 +82,16 @@ class MergeSort {
 	}
 	
 	//Utility class to print sorted Array
-	void printArray() {
+	private static void printArray() {
 		int n = arr.length;
 		for(int i = 0; i < n; i++) {
 			System.out.print(arr[i] + " ");
 		}
 		System.out.println();
+	}
+	
+	private int numOfComparisons(){
+		return count;
 	}
 		
 }
