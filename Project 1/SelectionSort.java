@@ -2,7 +2,7 @@
 class SelectionSort {
 	private int[] arr;
 	private int k;
-	private static int count = 0;
+	private int count = 0;
 	
 	public SelectionSort(int[] a, int n){
 		arr = a;
@@ -46,7 +46,7 @@ class SelectionSort {
 		System.out.println();
 	}
 	
-	private static int numOfComparisons() {
+	private int numOfComparisons() {
 		return count;
 	}
 }
