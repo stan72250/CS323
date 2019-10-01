@@ -1,7 +1,7 @@
 class InsertionSort{
 	private int[] arr;
 	private int k;
-	private static int count = 0;
+	private int count = 0;
 	
 	public InsertionSort(int[] a, int n){
 		arr = a;
@@ -36,7 +36,7 @@ class InsertionSort{
 		}
 		System.out.println();
 	}
-	private static int numOfComparisons(){
+	private int numOfComparisons(){
 		return count;
 	}
 }
