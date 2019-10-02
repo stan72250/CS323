@@ -9,19 +9,19 @@ class InsertionSort{
 	}
 	public void run(){
 		ISort(arr, k);
-		printArray(arr);
+		//printArray(arr);
 		System.out.println("Median Element: " + ISort(arr, k));
 		System.out.println("Number of Comparisons: " + numOfComparisons());
 	}
 	private int ISort(int arr[], int k) {
 		int n = arr.length;
-		for (int i = 1; i < n; ++i) {
+		for (int i = 1; i < n; i++) {
 			int key = arr[i];
 			int j = i - 1;
 			
-			while(j >= 0 && arr[j] > key) {
+			while(j >= 0 && arr[j] > key) {				
 				arr[j + 1] = arr[j];
-				j = j - 1;
+				j--;	
 				count++;
 			}
 			arr[j + 1] = key;
