@@ -1,97 +1,73 @@
-//Modification of Merge sort algorithm, merges only elements 1 to k.
 class MergeSort {
 	private int[] arr;
-	private int l;
-	private int r;
-	private int k;
 	private int count = 0;
+	private int k;
 	
 	public MergeSort(int[] a, int n){
 		arr = a;
 		k = n;
-		l = 0;
-		r = arr.length - 1;
 	}
 	
 	public void run() {
-		sort(arr, l, r);
+		sort(arr, arr.length);
+		printArray(arr);
+		System.out.println("Median Element: " + returnKthElement(k));
+		System.out.println("Number of Comparisons: " + numOfComparisons());
+		System.out.println();
 	}
 	
-	private void sort(int[] a, int l, int r) {
-		if(l < r) {
-			int m = (l + r) / 2;
-			
-			mergeSort(a, l, m);
-			count++;
-			mergeSort(a, m + 1, r);
-			count++;
-			merge(a, l, m, r);
+	private void sort(int[] a, int n) {
+		if(n < 2) {
+			return;
 		}
-	
+		int mid = n / 2;
+		int[] left = new int[mid];
+		int[] right = new int[n - mid];
+		
+		for(int i = 0; i < mid; i++) {
+			left[i] = a[i];
+		}
+		for(int i = mid; i < n; i++) {
+			right[i - mid] = a[i];
+		}
+		sort(left, mid);
+		sort(right, n - mid);
+		merge(a, left, right, mid, n - mid);
  	}
 			
-	private void merge(int arr[], int l, int m, int r) {
-		int n1 = m - l + 1;
-		int n2 = r - m;
-		
-		int L[] = new int [n1];
-		int R[] = new int [n2];
-		
-		for(int i = 0; i < n1; ++i) {
-			L[i] = arr[l + i];
+	private void merge(int arr[], int[] l, int[] r, int left, int right) {
+		int i = 0, j = 0, k = 0;
+		while(i < left && j < right) {
+			count++;
+			if(l[i] <= r[j]) {
+				arr[k++] = l[i++];
+			}
+			else {
+				arr[k++] = r[j++];
+			}
 		}
-		for(int j = 0; j < n2; ++j) {
-			R[j] = arr[m + 1 + j];
+		while(i < left) {
+			arr[k++] = l[i++];
 		}
-		
-		// Initial indexes of first and second subarrays 
-        int i = 0, j = 0; 
-  
-        // Initial index of merged subarray array 
-        int k = l; 
-        while (i < n1 && j < n2) 
-        { 
-            if (L[i] <= R[j]) 
-            { 
-                arr[k] = L[i]; 
-                i++; 
-            } 
-            else
-            { 
-                arr[k] = R[j]; 
-                j++; 
-            } 
-            k++; 
-        } 
-  
-        /* Copy remaining elements of L[] if any */
-        while (i < n1) 
-        { 
-            arr[k] = L[i]; 
-            i++; 
-            k++; 
-        } 
-  
-        /* Copy remaining elements of R[] if any */
-        while (j < n2) 
-        { 
-            arr[k] = R[j]; 
-            j++; 
-            k++; 
-        } 
+		while(j < right) {
+			arr[k++] = r[j++];
+		}
 	}
 	
-	//Utility class to print sorted Array
-	private static void printArray() {
+	private static void printArray(int[] arr) {
 		int n = arr.length;
+		System.out.println("Sorted Array: ");
 		for(int i = 0; i < n; i++) {
 			System.out.print(arr[i] + " ");
 		}
 		System.out.println();
 	}
 	
-	private int numOfComparisons(){
-		return count;
+	private int returnKthElement(int k) {
+		return arr[k - 1];
 	}
-		
+	
+	private int numOfComparisons() {
+		return count;
+	}		
 }
