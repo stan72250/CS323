@@ -82,7 +82,21 @@ public class Driver {
 			System.out.println();
 			MergeSort ms = new MergeSort(arr, k);
 			ms.run();
-		}		
+		}
+		System.out.println("MEDIAN OF MEDIANS");
+		for(int j = 0; j < 10; j++) {
+			System.out.println("Iter " + (j + 1) + ": ");
+			for(int i = 0; i < n; i++) {
+				arr[i] = rand.nextInt(100000) + 1;
+			}
+			System.out.println("Unsorted Array: ");
+			for(int i = 0; i < arr.length; i++) {
+				System.out.print(arr[i] + " ");
+			}
+			System.out.println();
+			MedianOfMedians mm = new MedianOfMedians(arr, k);
+			mm.run();
+		}
 	}		
 }
 
