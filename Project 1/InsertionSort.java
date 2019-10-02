@@ -11,7 +11,7 @@ class InsertionSort{
 		ISort(arr, k);
 		printArray(arr);
 		System.out.println("Median Element: " + ISort(arr, k));
-		System.out.println("Number of Comparisons: " + numOfComparisons);
+		System.out.println("Number of Comparisons: " + numOfComparisons());
 	}
 	private int ISort(int arr[], int k) {
 		int n = arr.length;
