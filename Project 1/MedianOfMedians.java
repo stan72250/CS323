@@ -1,5 +1,7 @@
+/*Author(s): Stanley Lin, Yajie Zhang
+ *References (URLs): https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/ 
+ * */
 import java.util.*;
-
 class MedianOfMedians {
 	private int[] arr;
 	private int l;
@@ -16,10 +18,11 @@ class MedianOfMedians {
 	}
 	
 	public void run() {
-		kthSmallest(arr, l, r, k);
+		System.out.println("Median Element: " + kthSmallest(arr, l, r, k));
+		System.out.println("Number of Comparisons: " + numOfComparisons());
 	}
 	
-	private static int findMedian(int[] a, int i, int n) {
+	private int findMedian(int[] a, int i, int n) {
 		if(i <= n) {
 			Arrays.sort(a, i, n);
 		}
@@ -29,13 +32,13 @@ class MedianOfMedians {
 		return a[n/2];
 	}
 	
-	private static int kthSmallest(int[] a, int l, int r, int k) {
+	private int kthSmallest(int[] a, int l, int r, int k) {
 		if(k > 0 && k <= r - l + 1) {
 			int n = r - l + 1;
 			
 			int i;
 			
-			int[]median = new int[(n + 4) / 5];
+			int[] median = new int[(n + 4) / 5];
 			for(i = 0; i < n / 5; i++) {
 				median[i] = findMedian(a, l + i * 5, 5);
 			}
@@ -49,8 +52,15 @@ class MedianOfMedians {
 			
 			int pos = partition(a, l, r, medOfMed);
 			
-			if(pos - l == k - 1) return a[pos];
-			if(pos - l > k - 1) return kthSmallest(a, l , pos - 1, k);
+			if(pos - l == k - 1) {
+				count++;
+				return a[pos];
+			}
+			if(pos - l > k - 1) {
+				count++;
+				return kthSmallest(a, l , pos - 1, k);
+			}
+			count++;
 		return kthSmallest(a, pos + 1, r, k - pos + l - 1);
 		}
 		return Integer.MAX_VALUE;
@@ -65,7 +75,7 @@ class MedianOfMedians {
 	  
 	// It searches for x in arr[l..r], and  
 	// partitions the array around x. 
-	private static int partition(int arr[], int l, int r, int x) { 
+	private int partition(int arr[], int l, int r, int x) { 
 	    // Search for x in arr[l..r] and move it to end 
 	    int i; 
 	    for (i = l; i < r; i++) 
@@ -86,5 +96,8 @@ class MedianOfMedians {
 	    swap(arr, i, r); 
 	    return i; 
 	} 
+	
+	private int numOfComparisons() {
+		return count;
+	}
 }
-
