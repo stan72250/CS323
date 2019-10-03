@@ -1,6 +1,9 @@
+//Authors: Stanley Lin & Yajie Zhang
+/*References: https://www.baeldung.com/java-merge-sort
+*/
 class MergeSort {
 	private int[] arr;
-	private int count = 0;
+	private static long count = 0;
 	private int k;
 	
 	public MergeSort(int[] a, int n){
@@ -9,8 +12,9 @@ class MergeSort {
 	}
 	
 	public void run() {
+		count = 0;
 		sort(arr, arr.length);
-		printArray(arr);
+		//printArray(arr);
 		System.out.println("Median Element: " + returnKthElement(k));
 		System.out.println("Number of Comparisons: " + numOfComparisons());
 		System.out.println();
@@ -38,7 +42,6 @@ class MergeSort {
 	private void merge(int arr[], int[] l, int[] r, int left, int right) {
 		int i = 0, j = 0, k = 0;
 		while(i < left && j < right) {
-			count++;
 			if(l[i] <= r[j]) {
 				arr[k++] = l[i++];
 			}
@@ -46,6 +49,7 @@ class MergeSort {
 				arr[k++] = r[j++];
 			}
 		}
+		count += k;
 		while(i < left) {
 			arr[k++] = l[i++];
 		}
@@ -67,7 +71,7 @@ class MergeSort {
 		return arr[k - 1];
 	}
 	
-	private int numOfComparisons() {
+	private static long numOfComparisons() {
 		return count;
 	}		
 }
