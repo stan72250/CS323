@@ -12,6 +12,7 @@ public class Driver {
 		
 		System.out.print("Enter a number of integers: ");
 		n = input.nextInt();
+		input.close();
 		int[] arr = new int[n];
 
 		if(arr.length % 2 == 1) {
@@ -25,78 +26,96 @@ public class Driver {
 		System.out.println();
 		
 		System.out.println("INSERTION SORT");
-		for(int j = 0; j < 10; j++) {
-			System.out.println("Iter " + (j + 1) + ": ");
-			for(int i = 0; i < n; i++) {
-				arr[i] = rand.nextInt(100000) + 1;
-			}
-			System.out.println("Unsorted Array: ");		
-			for(int i = 0; i < arr.length; i++) {
-				System.out.print(arr[i] + " ");
-			}		
-			System.out.println();
-			InsertionSort is = new InsertionSort(arr, k);
-			is.run();	
+	for(int j = 0; j < 10; j++) {
+		System.out.println("Iter " + (j + 1) + ": ");
+		for(int i = 0; i < n; i++) {
+			arr[i] = rand.nextInt(100000) + 1;
 		}
-		
-		System.out.println("SELECTION SORT");
-		for(int j = 0; j < 10; j++) {
-			System.out.println("Iter " + (j + 1) + ": ");
-			for(int i = 0; i < n; i++) {
-				arr[i] = rand.nextInt(100000) + 1;
-			}
-			System.out.println("Unsorted Array: ");		
-			for(int i = 0; i < arr.length; i++) {
-				System.out.print(arr[i] + " ");
-			}
-			System.out.println();
-			SelectionSort ss = new SelectionSort(arr, k);
-			ss.run();
+		//System.out.println("Unsorted Array: ");		
+		//for(int i = 0; i < arr.length; i++) {
+		//	System.out.print(arr[i] + " ");
+		//}		
+		//System.out.println();
+		InsertionSort is = new InsertionSort(arr, k);
+		is.run();	
+	}
+	
+	System.out.println();
+	
+	System.out.println("MERGE SORT");
+	for(int j = 0; j < 10; j++) {
+		System.out.println("Iter " + (j + 1) + ": ");
+		for(int i = 0; i < n; i++) {
+			arr[i] = rand.nextInt(100000) + 1;
 		}
-		
-		System.out.println("QUICK SELECT");
-		for(int j = 0; j < 10; j++) {
-			System.out.println("Iter " + (j + 1) + ": ");
-			for(int i = 0; i < n; i++) {
-				arr[i] = rand.nextInt(100000) + 1;
-			}
-			System.out.println("Array Input: ");
-			for(int i = 0; i < arr.length; i++) {
-				System.out.print(arr[i] + " ");
-			}
-			System.out.println();
-			QuickSelect qs = new QuickSelect(arr, k);
-			qs.run();
+		//System.out.println("Unsorted Array: ");
+		//for(int i = 0; i < arr.length; i++) {
+		//	System.out.print(arr[i] + " ");
+		//}
+		//System.out.println();
+		MergeSort ms = new MergeSort(arr, k);
+		ms.run();
+	}
+	
+	System.out.println();
+	
+	System.out.println("SELECTION SORT");
+	for(int j = 0; j < 10; j++) {
+		System.out.println("Iter " + (j + 1) + ": ");
+		for(int i = 0; i < n; i++) {
+			arr[i] = rand.nextInt(100000) + 1;
 		}
-		
-		System.out.println("MERGE SORT");
-		for(int j = 0; j < 10; j++) {
-			System.out.println("Iter " + (j + 1) + ": ");
-			for(int i = 0; i < n; i++) {
-				arr[i] = rand.nextInt(100000) + 1;
-			}
-			System.out.println("Unsorted Array: ");
-			for(int i = 0; i < arr.length; i++) {
-				System.out.print(arr[i] + " ");
-			}
-			System.out.println();
-			MergeSort ms = new MergeSort(arr, k);
-			ms.run();
+		//System.out.println("Unsorted Array: ");		
+		//for(int i = 0; i < arr.length; i++) {
+		//	System.out.print(arr[i] + " ");
+		//}
+		//System.out.println();
+		SelectionSort ss = new SelectionSort(arr, k);
+		ss.run();
+	}
+	
+	System.out.println();
+	
+	System.out.println("HEAP SORT");
+	for(int j = 0; j < 10; j++) {
+		System.out.println("Iter " + (j + 1) + ": ");
+		for(int i = 0; i < n; i++) {
+			arr[i] = rand.nextInt(100000) + 1;
 		}
-		System.out.println("MEDIAN OF MEDIANS");
-		for(int j = 0; j < 10; j++) {
-			System.out.println("Iter " + (j + 1) + ": ");
-			for(int i = 0; i < n; i++) {
-				arr[i] = rand.nextInt(100000) + 1;
-			}
-			System.out.println("Unsorted Array: ");
-			for(int i = 0; i < arr.length; i++) {
-				System.out.print(arr[i] + " ");
-			}
-			System.out.println();
-			MedianOfMedians mm = new MedianOfMedians(arr, k);
-			mm.run();
+		HeapSort hs = new HeapSort(arr, k);
+		hs.run();
+	}
+	System.out.println("QUICK SELECT");
+	for(int j = 0; j < 10; j++) {
+		System.out.println("Iter " + (j + 1) + ": ");
+		for(int i = 0; i < n; i++) {
+			arr[i] = rand.nextInt(100000) + 1;
 		}
+		//System.out.println("Array Input: ");
+		//for(int i = 0; i < arr.length; i++) {
+		//	System.out.print(arr[i] + " ");
+		//}
+		//System.out.println();
+		QuickSelect qs = new QuickSelect(arr, k);
+		qs.run();
+	}
+	
+	System.out.println();
+	
+	System.out.println("MEDIAN OF MEDIANS");
+	for(int j = 0; j < 10; j++) {
+		System.out.println("Iter " + (j + 1) + ": ");
+		for(int i = 0; i < n; i++) {
+			arr[i] = rand.nextInt(100000) + 1;
+		}
+		//System.out.println("Unsorted Array: ");
+		//for(int i = 0; i < arr.length; i++) {
+		//	System.out.print(arr[i] + " ");
+		//}
+		//System.out.println();
+		MedianOfMedians mm = new MedianOfMedians(arr, k);
+		mm.run();
+	}
 	}		
 }
 
