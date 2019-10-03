@@ -1,8 +1,9 @@
-
+//Authors: Stanley Lin & Yajie Zhang
+//References: https://www.geeksforgeeks.org/selection-sort/
 class SelectionSort {
 	private int[] arr;
 	private int k;
-	private int count = 0;
+	private static long count = 0;
 	
 	public SelectionSort(int[] a, int n){
 		arr = a;
@@ -10,8 +11,9 @@ class SelectionSort {
 	}
 	
 	public void run() {
+		count = 0;
 		SSort(arr, k);
-		printArray(arr);
+		//printArray(arr);
 		System.out.println("Median Element: " + SSort(arr, k));
 		System.out.println("Number of Comparisons: " + numOfComparisons());
 	}
@@ -46,7 +48,7 @@ class SelectionSort {
 		System.out.println();
 	}
 	
-	private int numOfComparisons() {
+	private static long numOfComparisons() {
 		return count;
 	}
 }
