@@ -1,53 +1,62 @@
+//Authors: Stanley Lin & Yajie Zhang
+//References: https://www.geeksforgeeks.org/quickselect-algorithm/
 import java.util.*;
 class QuickSelect {
 	private int[] arr;
+	private int l;
+	private int r;
 	private int k;
-	private static int count = 0;
+	private static long count = 0;
 	
 	public QuickSelect(int[] a, int n){
 		arr = a;
+		l = 0;
+		r = a.length - 1;
 		k = n;
 	}
 	
 	public void run() {
-		System.out.println(kthSmallest(arr, k));
+		count = 0;
+		System.out.println("Median Element: " + kthSmallest(arr, l, r, k));
 		System.out.println("Number of Comparisons: " + numOfComparisons());
 	}
-	
-	private int kthSmallest(int[] arr, int k) {
-		int l = 0;
-		int r = arr.length - 1;
-		
-		while(l < r){
-			int pivot = (l + r) / 2;
-			int pivotValue = arr[pivot];
-			int storage = l;
-			
-			arr[pivot] = arr[r];
-			arr[r] = pivotValue;
-			for(int i = l; i < r; i++) {
-				if(arr[i] < pivotValue) {
-					int temp = arr[storage];
-					arr[storage] = arr[i];
-					arr[i] = temp;
-					storage++;
-					count++;
-				}
+	private int partition(int[] arr, int l, int r) {
+		int x = arr[r], i = l;
+		for(int j = l; j <= r - 1; j++) {
+			if(arr[j] <= x) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+				i++;
 			}
-			arr[r] = arr[storage];
-			arr[storage] = pivotValue;
-			
-			if(storage < k) {
-				l = storage + 1;
-			}
-			else {
-				r = storage;
-			}
+			count++;
 		}
-		return arr[k - 1];
+		int temp = arr[i];
+		arr[i] = arr[r];
+		arr[r] = temp;
+		return i;
 	}
 	
-	private static int numOfComparisons() {
+	private int kthSmallest(int[] arr, int l, int r, int k) {
+		if(k > 0 && k <= r - l + 1) {
+			int index = partition(arr, l, r);
+			
+			if(index - l == k - 1) {
+				return arr[index];
+			}
+			
+			else if(index - l > k - 1) {
+				return kthSmallest(arr, l, index - 1, k);
+			}
+			
+			else {
+				return kthSmallest(arr, index + 1, r, k - index + l - 1);
+			}
+		}
+		return Integer.MAX_VALUE;
+	}
+
+	private static long numOfComparisons() {
 		return count;
 	}
 }
