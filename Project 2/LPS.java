@@ -117,18 +117,13 @@ public class LPS {
     
     static int longestPalSubstr(String str) { 
         int n = str.length();   // get length of input string 
-  
-        // table[i][j] will be false if substring str[i..j] 
-        // is not palindrome. 
-        // Else table[i][j] will be true 
+
         boolean table[][] = new boolean[n][n]; 
-  
-        // All substrings of length 1 are palindromes 
+
         int maxLength = 1; 
         for (int i = 0; i < n; ++i) 
             table[i][i] = true; 
-  
-        // check for sub-string of length 2. 
+ 
         int start = 0; 
         for (int i = 0; i < n - 1; ++i) { 
             if (str.charAt(i) == str.charAt(i + 1)) { 
@@ -140,18 +135,11 @@ public class LPS {
           
         // Check for lengths greater than 2. k is length 
         // of substring 
-        for (int k = 3; k <= n; ++k) { 
-              
-                  // Fix the starting index 
-            for (int i = 0; i < n - k + 1; ++i)  
-            { 
-                // Get the ending index of substring from 
-                // starting index i and length k 
+        for (int k = 3; k <= n; ++k) {                                
+            for (int i = 0; i < n - k + 1; ++i)  { 
+                
                 int j = i + k - 1; 
-  
-                // checking for sub-string from ith index to 
-                // jth index iff str.charAt(i+1) to  
-                // str.charAt(j-1) is a palindrome 
+         
                 if (table[i + 1][j - 1] && str.charAt(i) ==  
                                           str.charAt(j)) { 
                     table[i][j] = true; 
