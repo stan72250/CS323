@@ -25,23 +25,25 @@ public class LPS {
 	
 		//Close Buffered Reader
 		br.close();
+		
 		System.out.println("File name: " + inputFile.getName());
 		System.out.println();
 		System.out.println("ORIGINAL TEXT");
 		System.out.println();
 		System.out.println(orig_sequence);
 		System.out.println();
-		System.out.println("Total character count: " + countChars(orig_sequence));
+		System.out.println("Total character count: " + orig_sequence.replace(" ", "").length());
 		System.out.println();
 		System.out.println("CLEANED UP TEXT");
 		System.out.println();
 		System.out.println(mod_sequence);
 		System.out.println();
-		System.out.println("Total character count: " + countChars(mod_sequence));
+		System.out.println("Total character count: " + mod_sequence.length());
 		System.out.println();
 		System.out.println("LPS (non-contiguous): " + lps(mod_sequence));	
-		System.out.println("LPS (non-contiguous) length: " + countChars(lps(mod_sequence)));	
-		System.out.println("LPS (contiguous) length: " + longestPalSubstr(mod_sequence));
+		System.out.println("LPS (non-contiguous) length: " + lps(mod_sequence).length());	
+		System.out.println("LPS (contiguous): " + longestPalSubstr(mod_sequence));
+		System.out.println("LPS (contiguous) length: " + longestPalSubstr(mod_sequence).length());
 				
 	}
 
@@ -106,15 +108,20 @@ public class LPS {
         return strBuff.toString(); 
     }
     
-    static int longestPalSubstr(String str) { 
+    static String longestPalSubstr(String str) { 
         int n = str.length();   // get length of input string 
-	
+  
+        // table[i][j] will be false if substring str[i..j] 
+        // is not palindrome. 
+        // Else table[i][j] will be true 
         boolean table[][] = new boolean[n][n]; 
-	//All strings of length 1 are palindromes
+  
+        // All substrings of length 1 are palindromes 
         int maxLength = 1; 
         for (int i = 0; i < n; ++i) 
             table[i][i] = true; 
- 
+  
+        // check for sub-string of length 2. 
         int start = 0; 
         for (int i = 0; i < n - 1; ++i) { 
             if (str.charAt(i) == str.charAt(i + 1)) { 
@@ -126,15 +133,18 @@ public class LPS {
           
         // Check for lengths greater than 2. k is length 
         // of substring 
-        for (int k = 3; k <= n; ++k) {                                
+        for (int k = 3; k <= n; ++k) {       
+                  // Fix the starting index 
             for (int i = 0; i < n - k + 1; ++i)  { 
-                
+                // Get the ending index of substring from 
+                // starting index i and length k 
                 int j = i + k - 1; 
-         
-                if (table[i + 1][j - 1] && str.charAt(i) ==  
-                                          str.charAt(j)) { 
-                    table[i][j] = true; 
   
+                // checking for sub-string from ith index to 
+                // jth index iff str.charAt(i+1) to  
+                // str.charAt(j-1) is a palindrome 
+                if (table[i + 1][j - 1] && str.charAt(i) == str.charAt(j)) { 
+                    table[i][j] = true; 
                     if (k > maxLength) { 
                         start = i; 
                         maxLength = k; 
@@ -142,13 +152,8 @@ public class LPS {
                 } 
             } 
         } 
-        System.out.print("LPS (contiguous): "); 
-        printSubStr(str, start, start + maxLength - 1); 
-          
-        return maxLength; // return length of LPS 
-    } 
-    
-    static void printSubStr(String str, int low, int high) { 
-        System.out.println(str.substring(low, high + 1)); 
+  
+        String result = str.substring(start, (start + maxLength - 1) + 1);  
+        return result;  
     } 
 }
