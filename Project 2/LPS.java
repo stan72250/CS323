@@ -1,11 +1,13 @@
 //Authors: Stanley Lin & Yajie Zhang
+//Program to find the Longest Palindromic Subsequence in a string (non-contiguous) & (contiguous)
+//References: https://www.geeksforgeeks.org/longest-palindromic-subsequence-dp-12/, https://www.geeksforgeeks.org/longest-palindrome-substring-set-1/
+//Encoding: UTF-8
 import java.io.*;
-import java.util.*;
 
 public class LPS {
 	public static void main(String[] args) throws IOException {
+		//Read in text file, program assumes file is in the same directory as the source code
 		File inputFile = new File("QueensCollegeDescription.txt");
-		
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
 		
 		StringBuilder sb = new StringBuilder();
@@ -16,14 +18,12 @@ public class LPS {
 			sb.append("\n");
 			line = br.readLine();
 		}
+		//Convert text to String
 		String orig_sequence = sb.toString();
-	 	String mod_sequence = orig_sequence.replaceAll("[^a-zA-Z0-9]","").toUpperCase();
+		//Clean up String by removing all non-alphabetic characters, and setting all letters to uppercase
+	 	String mod_sequence = orig_sequence.replaceAll("[^a-zA-Z]","").toUpperCase();
 	
-		
-		
-		//System.out.println("LPS length: " + lps(seq));
-		
-		
+		//Close Buffered Reader
 		br.close();
 		System.out.println("File name: " + inputFile.getName());
 		System.out.println();
@@ -45,15 +45,6 @@ public class LPS {
 				
 	}
 
-	static int countChars(String s) {
-		int count = 0;
-		for(int i = 0 ; i < s.length(); i++) {
-			if(s.charAt(i) != ' ') {
-				count++;
-			}
-		}
-		return count;
-	}
 	// A utility function to get max of two integers 
     static int max (int x, int y) { 
     	return (x > y)? x : y; 
@@ -62,16 +53,16 @@ public class LPS {
     // Returns the length of the longest  
     // palindromic subsequence in seq 
     static String lps(String seq) {  
-    	int n = seq.length();
+    	int n = seq.length(); //get length of input string
     	int i, j, cl; 
     	// Create a table to store results of subproblems 
     	int L[][] = new int[n][n];
     	
     	
-    	// Strings of length 1 are palindrome of lentgh 1 
+    	// Strings of length 1 are palindrome of length 1 
     	for (i = 0; i < n; i++) 
     		L[i][i] = 1; 
-              
+        //Build table matrix      
         for (cl= 2; cl <= n; cl++) { 
             for (i = 0; i < n - cl + 1; i++) { 
                 j = i + cl - 1; 
@@ -86,7 +77,7 @@ public class LPS {
                 }
             } 
         }
-        
+        //Rebuild String from table matrix
         StringBuffer strBuff = new StringBuffer();
         int x = 0, y = n - 1;
         while(x < y) {
@@ -117,9 +108,9 @@ public class LPS {
     
     static int longestPalSubstr(String str) { 
         int n = str.length();   // get length of input string 
-
+	
         boolean table[][] = new boolean[n][n]; 
-
+	//All strings of length 1 are palindromes
         int maxLength = 1; 
         for (int i = 0; i < n; ++i) 
             table[i][i] = true; 
